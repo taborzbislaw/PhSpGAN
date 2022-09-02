@@ -5,5 +5,16 @@ Script convertPHSPtoHDF5.py us used to prepare training data (in a hdf file) bas
 
 Script generateFromHDF5.py is used to test the process of particles generation from a hdf5 file created by convertPHSPtoHDF5.py
 
-To train a conditional GAN, run:
+To train a RoCGAN, run:
 python3 trainCGAN.py
+
+To generate photons from a trained model run e.g.:
+python3  testCGAN.py 5.65  1.25  2.25 3500
+
+This will generate 3500 batches of 100000 photons corresponding to a phase space for primary electrons energy of 5.65 MeV, spot size of 1.25 mm, abd angular divergence of 2.25 degrees.
+
+To train and test a CGAN, just replace imports in testCGAN.py and trainCGAN.py from "import libRoCGAN" to "import libCGAN"
+
+The trained models and model parameters are in, respectively, *_model.pth and params.pkl files. Durin the testong phase only the generator model, saved in Gen_model.pth is used. 
+
+The normalization file normalizacja.dat is used only during the training, together with the hdf5 file with real photons.
