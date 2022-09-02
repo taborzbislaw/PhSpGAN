@@ -10,7 +10,7 @@ import pickle
 import sys
 from matplotlib import pyplot as plt
 
-from libCGAN import Generator_RoCGAN,Discriminator,generate_samples2,init_pytorch_cuda,get_min_max_constraints
+from libRoCGAN import Generator_RoCGAN,Discriminator,generate_samples2,init_pytorch_cuda,get_min_max_constraints
 
 paramsFileName = 'params.pkl'
 modelFileName = 'model.pth'
