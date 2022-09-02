@@ -1,0 +1,109 @@
+{
+
+    "#": "---------------------------------------------------------------------",
+    "#": " ARCHITECTURE ",
+    "#": "---------------------------------------------------------------------",
+        
+    "#": "type: non-saturating (default), wasserstein",
+    "#type": "non-saturating",
+    "type": "wasserstein",
+    "#type": "gradient_penalty",
+    "gp_weight": 0.1,
+    "layer_norm": false,
+    
+    "au_weight": 1,
+    "lat_weight": 1,
+
+    "#": "Number of layers for D and G",
+    "d_layers": 3,
+    "g_layers": 4,
+    
+    "#": "Number of neurons by layer for D and G",
+    "d_dim": 400,
+    "g_dim": 400,
+
+    "#": "Number of dimension of the latent variable",
+    "z_dim": 8,
+
+    "#": "Clamp (only used in wasserstein mode)",
+    "clamp_lower": -0.01,
+    "clamp_upper": 0.01,
+
+    
+    "#": "---------------------------------------------------------------------",
+    "#": " OPTIMISER ",
+    "#": "---------------------------------------------------------------------",
+        
+    "#": "optimiser: adam RMSprop",
+    "optimiser": "RMSprop",
+    "#optimiser": "adam",
+
+    "#": "optimiser: shuffle all batch ?",
+    "shuffle": false,
+
+    "#": "adam optimiser: regularisation L2 (for adam only) ; zero if no regul",
+    "d_weight_decay": 0,
+    "g_weight_decay": 0,
+
+    "#": "adam optimiser: beta",
+    "beta_1": "0.9",
+    "beta_2": "0.99",
+
+    "#": "optimiser: learning rate",
+    "d_learning_rate": 1e-5,
+    "g_learning_rate": 1e-5,
+
+    "#": "optimiser: number of D and G update by epoch",
+    "d_nb_update": 2,
+    "g_nb_update": 1,
+
+    "#": "optimiser: max nb of epoch (iteration)",
+    "epoch": 550000,
+    "plot_every_epoch": 400,
+    "validation_every_epoch": 400,
+
+    "#":"data for training",
+    "validation_filename": "None",
+    "start_pth":"None",
+    "training_filename":"/net/scratch/people/plgztabor/primo_workdir/Generators/CGAN/Archiwum/hdf5/photons_without_anihilation.hd5",
+    "model_name":"model.pth",
+    "params_name":"params.pkl",
+    "normalization_data_file":"/net/scratch/people/plgztabor/primo_workdir/Generators/CGAN/Archiwum/hdf5/normalizacja.dat",
+
+    "start date":0.0,
+
+    "#": "optimiser: nb of samples by batch",
+    "batch_size": 10000,
+
+    "#": "Smooth fake/real labels instead of zero/one",
+    "#label_smoothing": 0.2,
+
+    "leaky_relu":true,
+
+    "#": "---------------------------------------------------------------------",
+    "#": " DATA ",
+    "#": "---------------------------------------------------------------------",
+    "constraints": {
+        "Ekine": [0,6],
+        "X": [-200,200],
+        "Y": [-200,200],
+        "dX": [-1,1],
+        "dY": [-1,1],
+        "dZ": [0,1]
+    },
+    "keys": "Ekine X Y dX dY dZ E s a",
+    "cond_keys": "E s a",
+        
+    "#": "---------------------------------------------------------------------",
+    "#": " GENERAL ",
+    "#": "---------------------------------------------------------------------",
+        
+    "#": "gpu_mode: true false auto",
+    "gpu_mode": "auto",
+
+    "#": "save Generator and info every epoch",
+    "dump_epoch_start": 0,
+    "dump_epoch_every": 5000,
+    "dump_last_n_epoch": 0
+
+}
