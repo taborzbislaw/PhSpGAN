@@ -8,7 +8,7 @@ import torch
 import random
 import pickle
 import sys
-from libCGAN import *
+from libRoCGAN import *
 
 def normalizacja(filename):
 
